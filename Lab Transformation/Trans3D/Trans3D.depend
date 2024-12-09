@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1730903482 source:c:\code\computer graphics\lab\lab transformation\trans3d\main.cpp
+	<windows.h>
+	<math.h>
+	<gl\glut.h>
+
+976695772 c:\program files\mingw\include\gl\glut.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+893404800 c:\program files\mingw\include\gl\gl.h
+
+893404800 c:\program files\mingw\include\gl\glu.h
+	<GL/gl.h>
+
