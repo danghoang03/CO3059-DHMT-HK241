@@ -187,14 +187,8 @@ public:
 //==============Implement================================
 int		screenWidth = 1400;
 int		screenHeight= 700;
-float   angle = 45;
-float   cameraHeight = 4;
-float   cameraDistance = 12;
 bool    drawMode = 0;
-bool    viewMode = 1;
 float   wheelAngle = 0.0f;
-bool    autoMode = 0;
-bool    wheelDirection = 0;
 
 
 float	ColorArr[COLORNUM][3] = {{1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, { 0.0,  0.0, 1.0},
@@ -1314,47 +1308,13 @@ void drawAxis()
 	glEnd();
 }
 
-void setupCameraVolume(){
-    if(viewMode){
-        gluPerspective(50.0f,1,1.0f, 1000.0f);
-    }
-    else{
-        float	fHalfSize = 5;
-        glOrtho(-fHalfSize, fHalfSize, -fHalfSize, fHalfSize, -1000, 1000);
-    }
-}
-
-void updateAngle(int value){
-    if(autoMode){
-        if(!wheelDirection){
-            wheelAngle -= 5;
-        }
-        else {
-            wheelAngle += 5;
-        }
-	}
-	glutPostRedisplay();
-	glutTimerFunc(30, updateAngle, 0);
-}
 
 void myDisplay()
 {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	setupCameraVolume();
-	if(viewMode){
-        float cameraX = cameraDistance * sin(angle * PI / 180.0);
-        float cameraZ = cameraDistance * cos(angle * PI / 180.0);
-
-
-        gluLookAt(cameraX, cameraHeight, cameraZ, 0, 0, 0, 0, 1, 0);
-        glTranslated(0, -0.5, 0);
-	}
-	else{
-        gluLookAt(10, 0, 0, 0, 0, 0, 0, 1, 0);
-        glTranslated(0, -1.5, 0);
-	}
+	gluLookAt(10, 5, 10, 0, 0, 0, 0, 1, 0);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(screenWidth/5, 0, screenWidth/2, screenHeight);
@@ -1364,7 +1324,7 @@ void myDisplay()
 	// Gia do
     glPushMatrix();
 	glTranslated(0, 0.4, 0);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         cuboid.SetColor(1);
 	}
 	else {
@@ -1374,7 +1334,7 @@ void myDisplay()
 
     glPushMatrix();
     glTranslated(0, 2.75, 2.5);
-    if (viewMode == false || drawMode == false){
+    if (drawMode == false){
         shape1_1.SetColor(2);
     }
     else{
@@ -1384,7 +1344,7 @@ void myDisplay()
 
     glPushMatrix();
     glTranslated(0, 2.75, -2.5);
-    if (viewMode == false || drawMode == false){
+    if (drawMode == false){
         shape1_2.SetColor(2);
     }
     else{
@@ -1395,7 +1355,7 @@ void myDisplay()
     glPushMatrix();
     glTranslated(0, 2.75, -1);
     glRotated(90, 1.0, 0, 0);
-    if (viewMode == false || drawMode == false){
+    if (drawMode == false){
         shape2_1.SetColor(3);
     }
     else {
@@ -1406,7 +1366,7 @@ void myDisplay()
 	glPushMatrix();
     glTranslated(0, 2.75, 1);
     glRotated(-90, 1.0, 0, 0);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         shape2_2.SetColor(3);
     }
     else {
@@ -1417,7 +1377,7 @@ void myDisplay()
 	glPushMatrix();
     glTranslated(0.3, 2.75, 0);
     glRotated(-90, 0, 0, 1.0);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         cylinder.SetColor(4);
     }
     else {
@@ -1430,7 +1390,7 @@ void myDisplay()
     glTranslated(0.3, 2.75, 0);
     glRotated(-90, 0, 0, 1.0);
     glRotatef(wheelAngle, 0.0f, 1.0f, 0.0f);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         shape3.SetColor(5);
     }
     else {
@@ -1445,7 +1405,7 @@ void myDisplay()
 	float z = radius * cos(-PI/2 - wheelAngle * PI / 180.0);
 	glTranslated(0.6, y, z);
     glRotated(-90, 0, 0, 1.0);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         cylinder2.SetColor(11);
     }
     else {
@@ -1457,7 +1417,7 @@ void myDisplay()
 	glPushMatrix();
     glTranslated(0.6, 2.85, z);
     glRotated(90, 0, 1.0, 0);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         shape4.SetColor(0);
     }
     else {
@@ -1467,7 +1427,7 @@ void myDisplay()
 
     glPushMatrix();
     glTranslated(0.55, 2.75, 2.5);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         cuboid2.SetColor(1);
     }
     else {
@@ -1477,7 +1437,7 @@ void myDisplay()
 
     glPushMatrix();
     glTranslated(0.55, 2.75, -2.5);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         cuboid3.SetColor(1);
     }
     else {
@@ -1488,7 +1448,7 @@ void myDisplay()
 	glPushMatrix();
     glTranslated(0.6, 2.75, -2.0 + z);
     glRotated(90, 1.0, 0, 0);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         cylinder3.SetColor(11);
     }
     else {
@@ -1499,7 +1459,7 @@ void myDisplay()
 	glPushMatrix();
     glTranslated(0.6, 2.75, 2.0 + z);
     glRotated(90, 1.0, 0, 0);
-	if (viewMode == false || drawMode == false){
+	if (drawMode == false){
         cylinder4.SetColor(11);
     }
     else {
@@ -1512,18 +1472,8 @@ void myDisplay()
 }
 
 void myKeyboard(unsigned char key, int x, int y) {
-    if (key == '+'){
-        cameraDistance += 0.1;
-    }
-    else if (key == '-') {
-        cameraDistance -= 0.1;
-    }
-    else if (key == 'W' || key == 'w'){
+    if (key == 'W' || key == 'w'){
         drawMode = !drawMode;
-    }
-    else if (key == 'v' || key == 'V'){\
-        wheelAngle = 0;
-        viewMode = !viewMode;
     }
     else if (key == '1'){
         wheelAngle += 5.0f;
@@ -1531,33 +1481,13 @@ void myKeyboard(unsigned char key, int x, int y) {
     else if (key == '2'){
         wheelAngle -= 5.0f;
     }
-    else if (key == 'a' || key == 'A'){
-        autoMode = !autoMode;
-    }
-    else if (key == 'b' || key == 'B'){
-        wheelDirection = !wheelDirection;
-    }
     glutPostRedisplay();
 }
 
-void mySpecialFunc(int key, int x, int y) {
-    if (key == GLUT_KEY_LEFT){
-        angle += 1;
-    }
-    else if (key == GLUT_KEY_RIGHT){
-        angle -= 1;
-    }
-    else if (key == GLUT_KEY_UP) {
-        cameraHeight += 0.1;
-    }
-    else if (key == GLUT_KEY_DOWN) {
-        cameraHeight -= 0.1;
-    }
-    glutPostRedisplay();
-}
 
 void myInit()
 {
+    float	fHalfSize = 5;
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	glFrontFace(GL_CCW);
@@ -1565,29 +1495,20 @@ void myInit()
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+    glOrtho(-fHalfSize, fHalfSize, -fHalfSize, fHalfSize, -1000, 1000);
 }
 
 int main(int argc, _TCHAR* argv[])
 {
     cout << "1     :  Xoay banh xe nguoc chieu kim dong ho" << endl;
     cout << "2     :  Xoay banh xe cung chieu kim dong ho" << endl;
-    cout << "a, A  :  Bat/tat che do xoay banh xe tu dong" << endl;
-    cout << "b, B  :  Chuyen huong quay cua banh xe" << endl;
     cout << "W, w  :  Chuyen doi qua lai giua che do khung day va to mau" << endl;
-    cout << "V, v  :  Chuyen doi qua lai giua view 3D va 2D" << endl;
-    cout << "+     : Tang khoang cach camera" << endl;
-    cout << "-     : Giam khoang cach camera" << endl;
-    cout << "up arrow  : Tang chieu cao camera" << endl;
-    cout << "down arrow: Giam chieu cao camera" << endl;
-    cout << "<-        : Quay camera theo chieu kim dong ho" << endl;
-    cout << "->        : Quay camera nguoc chieu kim dong ho" << endl;
 
 	glutInit(&argc, (char**)argv); //initialize the tool kit
 	glutInitDisplayMode(GLUT_DOUBLE |GLUT_RGB | GLUT_DEPTH);//set the display mode
 	glutInitWindowSize(screenWidth, screenHeight); //set window size
 	glutInitWindowPosition(0, 0); // set window position on screen
 	glutCreateWindow("Hoang Minh Hai Dang - 2110120"); // open the screen window
-    glutSpecialFunc(mySpecialFunc);
     glutKeyboardFunc(myKeyboard);
 	cuboid.CreateCuboid(0.8, 0.4, 3.25);
 	shape1_1.CreateShape1(3, 0.3, 0.5, 0.4, 0.7);
@@ -1605,7 +1526,6 @@ int main(int argc, _TCHAR* argv[])
 
 	myInit();
     glutDisplayFunc(myDisplay);
-    glutTimerFunc(30, updateAngle, 0);
 
 	glutMainLoop();
 	return 0;
