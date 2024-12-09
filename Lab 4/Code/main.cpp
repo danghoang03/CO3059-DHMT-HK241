@@ -1504,6 +1504,12 @@ void myKeyboard(unsigned char key, int x, int y) {
         wheelAngle = 0;
         viewMode = !viewMode;
     }
+    else if (key == '+'){
+        cameraDistance += 0.1;
+    }
+    else if (key == '-') {
+        cameraDistance -= 0.1;
+    }
     else if (key == '1'){
         wheelAngle += 5.0f;
     }
