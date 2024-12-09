@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1732107844 source:c:\code\computer graphics\lab\lab mesh\main.cpp
+	<Windows.h>
+	<math.h>
+	<iostream>
+	<glut.h>
+
+976695772 c:\program files\mingw\include\glut.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+893404800 c:\program files\mingw\include\gl\gl.h
+
+893404800 c:\program files\mingw\include\gl\glu.h
+	<GL/gl.h>
+
