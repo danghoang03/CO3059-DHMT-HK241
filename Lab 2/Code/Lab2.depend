@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1733577087 source:c:\code\computer graphics\lab\lab 2\lab2\main.cpp
+	<math.h>
+	<iostream>
+	"supportClass.cpp"
+	"Mesh.cpp"
+
+1727334659 c:\code\computer graphics\lab\lab 2\lab2\supportclass.cpp
+	"supportClass.h"
+	<math.h>
+
+1727334626 c:\code\computer graphics\lab\lab 2\lab2\supportclass.h
+	<windows.h>
+	<math.h>
+	<gl.h>
+	<glut.h>
+
+893404800 c:\program files\mingw\include\gl.h
+
+976695772 c:\program files\mingw\include\glut.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+893404800 c:\program files\mingw\include\gl\gl.h
+
+893404800 c:\program files\mingw\include\gl\glu.h
+	<GL/gl.h>
+
+1733137080 c:\code\computer graphics\lab\lab 2\lab2\mesh.cpp
+	"Mesh.h"
+	<math.h>
+
+1733064642 c:\code\computer graphics\lab\lab 2\lab2\mesh.h
+	"supportClass.h"
+
